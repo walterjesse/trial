@@ -1,0 +1,14 @@
+version: 2
+builds:
+  - name: Django
+    env:
+      PYTHON_VERSION: 3.9
+    commands:
+      - pip install -r requirements.txt
+      - python manage.py collectstatic --noinput
+      - python manage.py migrate
+      - python manage.py compress
+      # Add any additional commands required for your project's build process
+    artifacts:
+      - path: .
+        name: Django
